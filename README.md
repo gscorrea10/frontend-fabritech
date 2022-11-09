@@ -10,7 +10,7 @@
 
 ## Como executar
 
-* Assim que abrir o arquivo na raiz, usar ```cd server``` em uma aba de terminal e ```cd web``` em outra para poder ter 2 terminais simultâneos para rodar a aplicação.
+* Assim que abrir o arquivo na raiz, usar ```cd web``` em uma aba do terminal;
 * Clone o repositório para sua maquina com o comando (```git clone```);
 * Instale as dependências em de cada pasta (server e web) com ```npm install```;
 * Inicie o container do banco de dados com ```docker-compose up```;
