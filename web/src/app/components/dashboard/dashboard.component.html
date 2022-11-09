@@ -1,0 +1,93 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue">Clients Dashboard</h1>
+        <div class="d-flex">
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Create
+                Client</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Client ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Kinship</th>
+            <th scope="col">created_at</th>
+            <th scope="col">updated_at</th>
+            <th scope="col">Functions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of clientsData">
+            <td>{{row.id}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.cpf}}</td>
+            <td>{{row.adress}}</td>
+            <td>{{row.kinship}}</td>
+            <td>{{row.created_at}}</td>
+            <td>{{row.updated_at}}</td>
+            <td>
+                <button (click)="edit(row)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    class="btn btn-info">Edit</button>
+                <button (click)="deleteClient(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Client data:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">First Name:</label>
+                        <input type="text" formControlName="name" class="form-control" id="exampleInputName"
+                            aria-describedby="nameHelp">
+
+                    </div>
+                    <div class="mb-3" [class.error]=" formValue.controls['cpf'].dirty &&
+                    formValue.hasError('required', 'cpf' )">
+                        <label for="exampleInputCpf" class="form-label">CPF:</label>
+                        <input type="text" formControlName="cpf" class="form-control border:2px-solid-red "
+                            id="exampleInputCpf">
+                        <small *ngIf="formValue.controls['cpf'].dirty && formValue.hasError('required', 'cpf')"
+                            class="text-danger">*CPF is required</small>
+                    </div>
+
+                    <div class="mb-3" [class.error]=" formValue.controls['adress'].dirty &&
+                    formValue.hasError('required', 'adress' )">
+                        <label for="exampleInputAdress" class="form-label">Adress:</label>
+                        <input type="text" formControlName="adress" class="form-control" id="exampleInputAdress">
+                        <small *ngIf="formValue.controls['adress'].dirty && formValue.hasError('required', 'adress')"
+                            class="text-danger">*Adress is required</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputKinship" class="form-label">Kinship:</label>
+                        <input type="text" formControlName="kinship" class="form-control" id="exampleInputKinship">
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" (click)="createClient()" class="btn btn-primary">Add</button>
+                <button type="button" (click)="updateClient()" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
