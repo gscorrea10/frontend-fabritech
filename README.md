@@ -13,7 +13,7 @@
 * Assim que abrir o arquivo na raiz, usar ```cd web``` em uma aba do terminal;
 * Clone o repositório para sua maquina com o comando (```git clone```);
 * Instale as dependências em de cada pasta (server e web) com ```npm install```;
-* Inicie o container do banco de dados com ```docker-compose up```;
+* Inicie o container do banco de dados com ```docker compose up```;
 * Rodar todas as migrations do prisma ```npx prisma migrate dev```;
 * Inicie o servidor (server) com ```npm run dev``` e então inicie o front (web) com ```ng serve -o```;
 * Para abrir o Prisma Studio (db visual editor) ```npx prisma studio```;
